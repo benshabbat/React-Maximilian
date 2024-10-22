@@ -4,11 +4,11 @@ export default function Player({ name,symbol}) {
   const [isEdit,setIsEdit]=useState(false)
   const [namePlayer,setNamePlayer]=useState(name)
   function handleEditClick(){
-    setIsEdit(!isEdit)
+    setIsEdit(edited=>!edited)
   }
   function handleChangeName(){
-    setIsEdit(!isEdit)
-  }
+    setIsEdit(edited=>!edited)
+    }
   return (
     <li>
       <span className="player">
