@@ -23,7 +23,10 @@ function App() {
             isActive={playerActive === "O"}
           />
         </ol>
-        <GameBoard playerSelectSquare={playerSelectSquare} />
+        <GameBoard
+          playerSelectSquare={playerSelectSquare}
+          symbol={playerActive}
+        />
       </div>
       game log
     </main>

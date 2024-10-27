@@ -6,10 +6,10 @@ const board = [
   [null, null, null],
 ];
 
-export default function GameBoard({playerSelectSquare}) {
+export default function GameBoard({playerSelectSquare,symbol}) {
   const [gameBoard, setGameBoard] = useState(board);
 
-  function handleSelectSquare(indexRow, indexCol, symbol) {
+  function handleSelectSquare(indexRow, indexCol) {
     setGameBoard((prevBoard) => {
       const newBoard = [...prevBoard.map((innerArr) => [...innerArr])];
       newBoard[indexRow][indexCol] = symbol;
@@ -25,7 +25,7 @@ export default function GameBoard({playerSelectSquare}) {
             {row.map((col, indexCol) => (
               <li key={indexCol}>
                 <button
-                  onClick={() => handleSelectSquare(indexRow, indexCol, "X")}
+                  onClick={() => handleSelectSquare(indexRow, indexCol)}
                 >
                   {col}
                 </button>
