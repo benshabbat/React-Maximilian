@@ -6,7 +6,7 @@ const board = [
   [null, null, null],
 ];
 
-export default function GameBoard() {
+export default function GameBoard({playerSelectSquare}) {
   const [gameBoard, setGameBoard] = useState(board);
 
   function handleSelectSquare(indexRow, indexCol, symbol) {
@@ -15,6 +15,7 @@ export default function GameBoard() {
       newBoard[indexRow][indexCol] = symbol;
       return newBoard;
     });
+    playerSelectSquare()
   }
   return (
     <ol id="game-board">
