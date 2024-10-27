@@ -3,9 +3,13 @@ import { useState } from "react";
 export default function Player({ name, symbol }) {
   const [isEdit, setIsEdit] = useState(false);
   const [namePlayer, setNamePlayer] = useState(name);
+
+
   function handleEditClick() {
     setIsEdit((edited) => !edited);
   }
+
+  
   function handleChangeName(e) {
     const {value} = e.target
     setNamePlayer(value);
@@ -21,7 +25,6 @@ export default function Player({ name, symbol }) {
         <span className="player-symbol">{symbol}</span>
       </span>
       <button onClick={handleEditClick}>{isEdit ? "Save" : "Edit"}</button>
-      {/* {isEdit?<button onClick={handleChangeName}>Save</button>:<button onClick={handleEditClick}>Edit</button>} */}
     </li>
   );
 }
