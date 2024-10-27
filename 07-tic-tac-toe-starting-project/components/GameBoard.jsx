@@ -1,17 +1,23 @@
-const board =
-[
-    [null, null,null],
-    [null, null,null],
-    [null, null,null],
-]
-
+const board = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null],
+];
 
 export default function GameBoard() {
   return (
-    <ol>{board.map((row,indexRow)=>{
-        return <li key={indexRow}>{row.map((col,indexCol)=>{
-            return <li key={indexCol}>{col}</li>
-        })}</li>
-    })}</ol>
-  )
+    <ol id="game-board">
+      {board.map((row, indexRow) => (
+        <li key={indexRow}>
+          <ol>
+            {row.map((col, indexCol) => (
+              <li key={indexCol}>
+                <button>{col}</button>
+              </li>
+            ))}
+          </ol>
+        </li>
+      ))}
+    </ol>
+  );
 }
