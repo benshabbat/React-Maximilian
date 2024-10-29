@@ -2,9 +2,11 @@ import { useState } from "react";
 
 import GameBoard from "../components/GameBoard";
 import Player from "../components/Player";
+import Log from "../components/Log";
 
 function App() {
   const [playerActive, setPlayerActive] = useState("X");
+  const [dataPlayer, setDataPlayer] = useState();
   function playerSelectSquare() {
     setPlayerActive((prev) => (prev === "X" ? "O" : "X"));
   }
@@ -28,7 +30,7 @@ function App() {
           symbol={playerActive}
         />
       </div>
-      game log
+      <Log/>
     </main>
   );
 }
