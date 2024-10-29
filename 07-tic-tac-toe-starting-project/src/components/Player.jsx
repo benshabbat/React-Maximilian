@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-export default function Player({ name, symbol , isActive}) {
+export default function Player({ name, symbol , isActive,handleEditNamePlayer}) {
   const [isEdit, setIsEdit] = useState(false);
   const [namePlayer, setNamePlayer] = useState(name);
 
 
   function handleEditClick() {
     setIsEdit((edited) => !edited);
+    handleEditNamePlayer(symbol,namePlayer)
   }
 
 

@@ -3,7 +3,7 @@ import { useState } from "react";
 import GameBoard from "./components/GameBoard";
 import Player from "./components/Player";
 import Log from "./components/Log";
-import { WINNING_COMBINATIONS } from "./winning-combinations.js";
+import { getWinner } from "./utils.js";
 import GameOver from "./components/GameOver.jsx";
 const board = [
   [null, null, null],
@@ -19,8 +19,13 @@ function getPlayerActive(data) {
   return player;
 }
 function App() {
+  const [players, setPlayers] = useState({
+    X: "player 1",
+    O: "player 2",
+  });
   const [dataGame, setDataGame] = useState([]);
   const playerActive = getPlayerActive(dataGame);
+
   function playerSelectSquare(row, col) {
     setDataGame((prevData) => {
       let player = getPlayerActive(prevData);
@@ -29,28 +34,26 @@ function App() {
     });
   }
 
-  let gameBoard = [...board.map(inner=>[...inner])];
+  
+
+  let gameBoard = [...board.map((inner) => [...inner])];
 
   for (const data of dataGame) {
     const { player, square } = data;
     const { row, col } = square;
     gameBoard[row][col] = player;
   }
-  let winner = null;
-  for (const comination of WINNING_COMBINATIONS) {
-    const options1 = gameBoard[comination[0].row][comination[0].col];
-    const options2 = gameBoard[comination[1].row][comination[1].col];
-    const options3 = gameBoard[comination[2].row][comination[2].col];
 
-    if (options1 && options1 === options2 && options1 === options3) {
-      winner = options1;
-    }
-  }
+  const winner = getWinner(gameBoard, players);
 
   const hasDraw = !winner && dataGame.length === 9;
   function handleRematch() {
-    winner = null;
     setDataGame([]);
+  }
+  function handleEditNamePlayer(symbol, newName) {
+    setPlayers((prev) => {
+      return { ...prev, [symbol]: newName };
+    });
   }
   return (
     <main>
@@ -60,11 +63,13 @@ function App() {
             name={"player 1"}
             symbol={"X"}
             isActive={playerActive === "X"}
+            handleEditNamePlayer={handleEditNamePlayer}
           />
           <Player
             name={"player 2"}
             symbol={"O"}
             isActive={playerActive === "O"}
+            handleEditNamePlayer={handleEditNamePlayer}
           />
         </ol>
         {(winner || hasDraw) && (
