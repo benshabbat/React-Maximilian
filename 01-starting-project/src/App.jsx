@@ -1,14 +1,9 @@
-import Header from "./components/Header";
+import Header from "./components/Header"
 
 function App() {
   return (
-    <div>
-      <Header/>
-      <main>
-        <h2>Time to get started!</h2>
-      </main>
-    </div>
-  );
+    <Header/>
+  )
 }
 
-export default App;
+export default App
