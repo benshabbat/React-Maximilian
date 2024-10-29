@@ -6,10 +6,10 @@ import Log from "../components/Log";
 
 function App() {
   const [playerActive, setPlayerActive] = useState("X");
-  const [dataPlayer, setDataPlayer] = useState();
+  const [dataGame, setDataGame] = useState();
   function playerSelectSquare(row, col) {
     setPlayerActive((prev) => (prev === "X" ? "O" : "X"));
-    setDataPlayer((prevData) => {
+    setDataGame((prevData) => {
       const player = "X";
       if (prevData.length > 0 && prevData[0].player === "X") {
         player = "O";
