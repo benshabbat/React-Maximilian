@@ -3,17 +3,19 @@ import { useState } from "react";
 import GameBoard from "../components/GameBoard";
 import Player from "../components/Player";
 import Log from "../components/Log";
-
+function getPlayerActive(data) {
+  let player = "X";
+  if (data.length > 0 && data[0].player === "X") {
+    player = "O";
+  }
+  return player;
+}
 function App() {
-  const [playerActive, setPlayerActive] = useState("X");
   const [dataGame, setDataGame] = useState([]);
+  const playerActive = getPlayerActive(dataGame);
   function playerSelectSquare(row, col) {
-    setPlayerActive((prev) => (prev === "X" ? "O" : "X"));
     setDataGame((prevData) => {
-      let player = "X";
-      if (prevData.length > 0 && prevData[0].player === "X") {
-        player = "O";
-      }
+      let player = getPlayerActive(prevData);
       const updateData = [{ square: { row, col }, player }, ...prevData];
       return updateData;
     });
@@ -38,7 +40,7 @@ function App() {
           dataGame={dataGame}
         />
       </div>
-      <Log dataGame={dataGame}/>
+      <Log dataGame={dataGame} />
     </main>
   );
 }
