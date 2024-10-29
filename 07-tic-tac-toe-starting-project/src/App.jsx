@@ -3,6 +3,12 @@ import { useState } from "react";
 import GameBoard from "../components/GameBoard";
 import Player from "../components/Player";
 import Log from "../components/Log";
+const board = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null],
+];
+
 function getPlayerActive(data) {
   let player = "X";
   if (data.length > 0 && data[0].player === "X") {
@@ -19,6 +25,14 @@ function App() {
       const updateData = [{ square: { row, col }, player }, ...prevData];
       return updateData;
     });
+  }
+
+  let gameBoard = board;
+
+  for (const data of dataGame) {
+    const { player, square } = data;
+    const { row, col } = square;
+    gameBoard[row][col] = player;
   }
   return (
     <main>
@@ -37,7 +51,7 @@ function App() {
         </ol>
         <GameBoard
           playerSelectSquare={playerSelectSquare}
-          dataGame={dataGame}
+          gameBoard={gameBoard}
         />
       </div>
       <Log dataGame={dataGame} />

@@ -1,17 +1,7 @@
-const board = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
 
-export default function GameBoard({ playerSelectSquare, dataGame }) {
-  let gameBoard = board;
 
-  for (const data of dataGame) {
-    const { player, square } = data;
-    const { row, col } = square;
-    gameBoard[row][col] = player;
-  }
+export default function GameBoard({ playerSelectSquare, gameBoard }) {
+
 
   return (
     <ol id="game-board">
