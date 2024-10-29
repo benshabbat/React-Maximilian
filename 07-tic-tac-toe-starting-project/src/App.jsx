@@ -6,11 +6,11 @@ import Log from "../components/Log";
 
 function App() {
   const [playerActive, setPlayerActive] = useState("X");
-  const [dataGame, setDataGame] = useState();
+  const [dataGame, setDataGame] = useState([]);
   function playerSelectSquare(row, col) {
     setPlayerActive((prev) => (prev === "X" ? "O" : "X"));
     setDataGame((prevData) => {
-      const player = "X";
+      let player = "X";
       if (prevData.length > 0 && prevData[0].player === "X") {
         player = "O";
       }
@@ -35,7 +35,7 @@ function App() {
         </ol>
         <GameBoard
           playerSelectSquare={playerSelectSquare}
-          symbol={playerActive}
+          dataGame={dataGame}
         />
       </div>
       <Log />
