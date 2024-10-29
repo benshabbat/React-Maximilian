@@ -3,13 +3,8 @@ import { useState } from "react";
 import GameBoard from "./components/GameBoard";
 import Player from "./components/Player";
 import Log from "./components/Log";
-import { getWinner } from "./utils.js";
+import { getWinner, getBoard } from "./utils.js";
 import GameOver from "./components/GameOver.jsx";
-const board = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
 
 function getPlayerActive(data) {
   let player = "X";
@@ -34,16 +29,7 @@ function App() {
     });
   }
 
-  
-
-  let gameBoard = [...board.map((inner) => [...inner])];
-
-  for (const data of dataGame) {
-    const { player, square } = data;
-    const { row, col } = square;
-    gameBoard[row][col] = player;
-  }
-
+  const gameBoard = getBoard(dataGame);
   const winner = getWinner(gameBoard, players);
 
   const hasDraw = !winner && dataGame.length === 9;

@@ -1,8 +1,21 @@
+import { WINNING_COMBINATIONS } from "./winning-combinations.js";
+const board = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+  ];
 
-import { WINNING_COMBINATIONS } from "./winning-combinations.js"
 
+export function getBoard(dataGame) {
+  let gameBoard = [...board.map((inner) => [...inner])];
 
-
+  for (const data of dataGame) {
+    const { player, square } = data;
+    const { row, col } = square;
+    gameBoard[row][col] = player;
+  }
+  return gameBoard;
+}
 
 export function getWinner(gameBoard, players) {
   let winner = null;
@@ -18,6 +31,3 @@ export function getWinner(gameBoard, players) {
   }
   return winner;
 }
-
-
-
