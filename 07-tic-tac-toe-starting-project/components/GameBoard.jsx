@@ -1,5 +1,3 @@
-
-
 const board = [
   [null, null, null],
   [null, null, null],
@@ -14,7 +12,7 @@ export default function GameBoard({ playerSelectSquare, dataGame }) {
     const { row, col } = square;
     gameBoard[row][col] = player;
   }
-  
+
   return (
     <ol id="game-board">
       {gameBoard.map((row, indexRow) => (
@@ -22,7 +20,10 @@ export default function GameBoard({ playerSelectSquare, dataGame }) {
           <ol>
             {row.map((col, indexCol) => (
               <li key={indexCol}>
-                <button onClick={() => playerSelectSquare(indexRow, indexCol)}>
+                <button
+                  onClick={() => playerSelectSquare(indexRow, indexCol)}
+                  disabled={col !== null}
+                >
                   {col}
                 </button>
               </li>
