@@ -29,7 +29,7 @@ function App() {
     });
   }
 
-  let gameBoard = board;
+  let gameBoard = [...board.map(inner=>[...inner])];
 
   for (const data of dataGame) {
     const { player, square } = data;
@@ -46,6 +46,12 @@ function App() {
       winner = options1;
     }
   }
+
+  const hasDraw = !winner && dataGame.length === 9;
+  function handleRematch() {
+    winner = null;
+    setDataGame([]);
+  }
   return (
     <main>
       <div id="game-container">
@@ -61,7 +67,9 @@ function App() {
             isActive={playerActive === "O"}
           />
         </ol>
-        {winner && <GameOver winner={winner}/>}
+        {(winner || hasDraw) && (
+          <GameOver winner={winner} handleRematch={handleRematch} />
+        )}
         <GameBoard
           playerSelectSquare={playerSelectSquare}
           gameBoard={gameBoard}

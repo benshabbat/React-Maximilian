@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function GameOver({ winner }) {
+export default function GameOver({ winner,handleRematch }) {
   return (
     <div id="game-over">
       <h2>Game Over</h2>
-      <p>You won {winner}</p>
+      {winner ? <p>You won {winner}</p> : <p>Draw</p>}
       <p>
-        <button>Rematch</button>
+        <button onClick={handleRematch}>Rematch</button>
       </p>
     </div>
   );
