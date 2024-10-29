@@ -38,7 +38,7 @@ function App() {
           dataGame={dataGame}
         />
       </div>
-      <Log />
+      <Log dataGame={dataGame}/>
     </main>
   );
 }
