@@ -7,8 +7,16 @@ import Log from "../components/Log";
 function App() {
   const [playerActive, setPlayerActive] = useState("X");
   const [dataPlayer, setDataPlayer] = useState();
-  function playerSelectSquare() {
+  function playerSelectSquare(row, col) {
     setPlayerActive((prev) => (prev === "X" ? "O" : "X"));
+    setDataPlayer((prevData) => {
+      const player = "X";
+      if (prevData.length > 0 && prevData[0].player === "X") {
+        player = "O";
+      }
+      const updateData = [{ square: { row, col }, player }, ...prevData];
+      return updateData;
+    });
   }
   return (
     <main>
@@ -30,7 +38,7 @@ function App() {
           symbol={playerActive}
         />
       </div>
-      <Log/>
+      <Log />
     </main>
   );
 }
