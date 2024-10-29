@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
 
-export default function Log({dataGame}) {
-    const {player,square} = dataGame;
-    const { row, col } = square;
+export default function Log({ dataGame }) {
   return (
-    <ol id='log'>Log</ol>
-  )
+    <ol id="log">
+      {dataGame.map((data, index) => {
+        const { player, square } = data;
+        const { row, col } = square;
+        return (
+          <li key={index}>
+            {player} selected {`[${row}][${col}]`}
+          </li>
+        );
+      })}
+    </ol>
+  );
 }
