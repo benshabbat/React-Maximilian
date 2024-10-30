@@ -7,6 +7,13 @@ export default function UserInputs() {
     expectedReturn: 0,
     duration: 0,
   });
+
+  function handleChange(e) {
+    const { value, name } = e.traget;
+    setData((prevData) => {
+      return { ...prevData, [name]: value };
+    });
+  }
   return (
     <section id="user-input">
       <div className="input-group">
@@ -16,6 +23,7 @@ export default function UserInputs() {
             type="number"
             name="initialInvestment"
             placeholder="Initial Invencment"
+            onChange={handleChange}
           />
         </p>
         <p>
@@ -24,6 +32,7 @@ export default function UserInputs() {
             type="number"
             name="annualInvestment"
             placeholder="Annual Invencment"
+            onChange={handleChange}
           />
         </p>
       </div>
@@ -34,12 +43,18 @@ export default function UserInputs() {
             type="number"
             name="expectedReturn"
             placeholder="Expected return"
+            onChange={handleChange}
           />
         </p>
 
         <p>
           <label>duration</label>
-          <input type="number" name="duration" placeholder="Duration" />
+          <input
+            type="number"
+            name="duration"
+            placeholder="Duration"
+            onChange={handleChange}
+          />
         </p>
       </div>
     </section>
