@@ -1,27 +1,27 @@
 export default function UserInputs() {
   return (
-    <div id="user-input" className="input-group">
-      <div >
-        <label>
-          Initial Invencment
+    <section id="user-input">
+      <div className="input-group">
+        <p>
+          <label>Initial Invencment</label>
           <input type="number" />
-        </label>
-
-        <label>
-          Annual Invencment
+        </p>
+        <p>
+          <label>Annual Invencment</label>
           <input type="number" />
-        </label>
-
-        <label>
-          Expected return
-          <input type="number" />
-        </label>
-
-        <label>
-          duration
-          <input type="number" />
-        </label>
+        </p>
       </div>
-    </div>
+      <div className="input-group">
+        <p>
+          <label>Expected return</label>
+          <input type="number" />
+        </p>
+
+        <p>
+          <label>duration</label>
+          <input type="number" />
+        </p>
+      </div>
+    </section>
   );
 }
