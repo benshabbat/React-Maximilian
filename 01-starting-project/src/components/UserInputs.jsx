@@ -11,7 +11,7 @@ export default function UserInputs({handleChange}) {
             name="initialInvestment"
             placeholder="Initial Invencment"
             onChange={handleChange}
-          />
+            />
         </p>
         <p>
           <label>Annual Invencment</label>
@@ -20,7 +20,7 @@ export default function UserInputs({handleChange}) {
             name="annualInvestment"
             placeholder="Annual Invencment"
             onChange={handleChange}
-          />
+            />
         </p>
       </div>
       <div className="input-group">
@@ -31,7 +31,7 @@ export default function UserInputs({handleChange}) {
             name="expectedReturn"
             placeholder="Expected return"
             onChange={handleChange}
-          />
+            />
         </p>
 
         <p>
