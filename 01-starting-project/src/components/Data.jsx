@@ -10,26 +10,26 @@ export default function Data({ data }) {
     <table id="result">
       <thead>
         <tr>
-          <th>year</th>
-          <th>interest</th>
-          <th>value End Of Year</th>
-          <th>annual Investment</th>
-          <th>invested capital</th>
+          <th>Year</th>
+          <th>Investment Value</th>
+          <th>Ineterst (Year)</th>
+          <th>Total Ineterst</th>
+          <th>Invested Capital</th>
         </tr>
       </thead>
       <tbody>
-        {res.map((res, index) => {
+        {res.map((res) => {
           const totalInterest =
             res.valueEndOfYear -
             res.annualInvestment * res.year -
             initialInvestment;
           return (
-            <tr key={index}>
+            <tr key={res.year}>
               <td>{res.year}</td>
-              <td>{formatter.format(res.interest)}</td>
               <td>{formatter.format(res.valueEndOfYear)}</td>
-              <td>{formatter.format(res.annualInvestment)}</td>
+              <td>{formatter.format(res.interest)}</td>
               <td>{formatter.format(totalInterest)}</td>
+              <td>{formatter.format(res.valueEndOfYear-totalInterest)}</td>
             </tr>
           );
         })}
