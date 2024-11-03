@@ -14,7 +14,7 @@ function App() {
   function handleChange(e) {
     const { value, name } = e.target;
     setData((prevData) => {
-      return { ...prevData, [name]: value };
+      return { ...prevData, [name]: +value };
     });
   }
   return (
