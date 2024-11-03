@@ -12,7 +12,7 @@ function App() {
   });
 
   function handleChange(e) {
-    const { value, name } = e.traget;
+    const { value, name } = e.target;
     setData((prevData) => {
       return { ...prevData, [name]: value };
     });
@@ -20,7 +20,7 @@ function App() {
   return (
     <>
     <Header/>
-    <UserInputs handleChange={handleChange}/>
+    <UserInputs data={data} handleChange={handleChange}/>
     <Data data={data} />
     </>
   )
