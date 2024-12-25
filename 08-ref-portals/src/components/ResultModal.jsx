@@ -31,7 +31,7 @@ const ResultModal = forwardRef(function ResultModal(
   const formattedRemainingTime = (remainingTime / 1000).toFixed(2);
   const score = ((targetTime - formattedRemainingTime)*100)/targetTime;
   return (
-    <dialog className="result-modal" ref={dialog}>
+    <dialog className="result-modal" ref={dialog} onClose={onReset}>
       {youLost?<h2>You Lost</h2>:
       <h2>Your Score {score}</h2>}
       <p>
@@ -40,7 +40,7 @@ const ResultModal = forwardRef(function ResultModal(
       <p>
         You stopped the time <strong>{formattedRemainingTime} seconds left</strong>
       </p>
-      <form method="dialog" onSubmit={onReset}>
+      <form method="dialog" onSubmit={onReset} >
         <button>Close</button>
       </form>
     </dialog>
