@@ -1,9 +1,9 @@
 
-export default function Input({name,type="text",isTextArea=false}) {
+export default function Input({name,isTextArea,...props}) {
   return (
     <p>
-    <label>{name}</label>
-    {isTextArea ? <textarea name={name} /> :<input type={type} name={name} /> }
+    <label className="capitalize">{name}</label>
+    {isTextArea ? <textarea {...props} /> :<input {...props} /> }
   </p>
   )
 }

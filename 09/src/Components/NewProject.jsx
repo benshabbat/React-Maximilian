@@ -10,20 +10,8 @@ export default function NewProject() {
       </menu>
       <div>
         <Input name="title" />
-        <Input name="Description" isTextArea={true} />
+        <Input name="Description" isTextArea/>
         <Input name="date" type="date"/>
-        {/* <p>
-          <label>Title</label>
-          <input name="title" />
-        </p>
-        <p>
-          <label>Description</label>
-          <textarea name="description"/>
-        </p>
-        <p>
-          <label>Due Date</label>
-          <input type="date" name="date" />
-        </p> */}
       </div>
     </div>
   );
