@@ -20,7 +20,6 @@ export default function NewProject({onCancel,onAdd}) {
             title: titleRef.current.value,
             description: descriptionRef.current.value,
             date: dateRef.current.value,
-            id:Math.random()
         })
     }
   return (
