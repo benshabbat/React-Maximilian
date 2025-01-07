@@ -6,11 +6,11 @@ import ProjectsSidebar from "./Components/ProjectsSidebar";
 function App() {
   const [stateProjects, setStateProjects] = useState({
     selectedProject: undefined,
-    project: [],
+    projects: [],
   });
-  const [isStart, setIsStart] = useState(false);
 
-  function handleAddProject() {
+
+  function handleStartAddProject() {
     setStateProjects((prevState) => {
       return {
         ...prevState,
@@ -26,11 +26,22 @@ function App() {
       };
     });
   }
+
+  function handleAddProject(newProject) {
+    setStateProjects((prevState) => {
+      return {
+        ...prevState,
+        projects: [...prevState.projects, newProject]
+      };
+    });
+  }
+
+  console.log(stateProjects)
   return (
     <main className="h-screen my-8 flex gap-8">
-      <ProjectsSidebar onAddProject={handleAddProject} />
-      {stateProjects.selectedProject===null && <NewProject onCancel={handleCancelProject}/>}
-      {stateProjects.selectedProject===undefined && <NoProjectSelected onAddProject={handleAddProject} />}
+      <ProjectsSidebar onAddProject={handleStartAddProject} />
+      {stateProjects.selectedProject===null && <NewProject onCancel={handleCancelProject} onAdd={handleAddProject}/>}
+      {stateProjects.selectedProject===undefined && <NoProjectSelected onAddProject={handleStartAddProject} />}
     </main>
   );
 }
