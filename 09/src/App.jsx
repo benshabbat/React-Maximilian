@@ -50,7 +50,7 @@ function App() {
   console.log(stateProjects);
   return (
     <main className="h-screen my-8 flex gap-8">
-      <ProjectsSidebar onAddProject={handleStartAddProject} projects={stateProjects.projects} onSelectProject={handleSelectProject} />
+      <ProjectsSidebar onAddProject={handleStartAddProject} projects={stateProjects.projects} onSelectProject={handleSelectProject} selectedProjectId={stateProjects.selectedProjectId} />
       {stateProjects.selectedProjectId === null && (
         <NewProject onCancel={handleCancelProject} onAdd={handleAddProject} />
       )}
