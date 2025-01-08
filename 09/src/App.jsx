@@ -9,6 +9,7 @@ function App() {
     selectedProject: undefined,
     projects: [],
   });
+  const [selectedProjects, setSelectedProjects] = useState(null);
 
   function handleStartAddProject() {
     setStateProjects((prevState) => {
@@ -40,6 +41,7 @@ function App() {
 
   function handleSelectProject(projectId) {
     setStateProjects((prevState) => {
+      setSelectedProjects(prevState.projects.find((project) => project.id === projectId));
       return {
         ...prevState,
         selectedProjectId: projectId,
@@ -58,7 +60,7 @@ function App() {
         <NoProjectSelected onAddProject={handleStartAddProject} />
       )}
       {stateProjects.selectedProjectId !== null && stateProjects.selectedProjectId !== undefined && (
-        <SelectedProject project={stateProjects.projects.find((project) => project.id === stateProjects.selectedProjectId)} />
+        <SelectedProject project={selectedProjects} />
       )}
     </main>
   );

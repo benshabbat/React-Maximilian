@@ -69,8 +69,8 @@ export default function NewProject({ onCancel, onAdd }) {
         </menu>
         <div>
           <Input ref={titleRef} name="title" />
-          <Input ref={descriptionRef} name="Description" isTextArea />
-          <Input ref={dateRef} name="date" type="date" />
+          <Input ref={descriptionRef} name="description" isTextArea />
+          <Input ref={dateRef} name="date" type="date" defaultValue={new Date().toISOString().split('T')[0]}  />
         </div>
       </div>
     </>
