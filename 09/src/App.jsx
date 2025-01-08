@@ -37,11 +37,11 @@ function App() {
       };
     });
   }
-  function handleDeleteProject(projectId) {
+  function handleDeleteProject() {
     setStateProjects((prevState) => {
       return {
         ...prevState,
-        projects: prevState.projects.filter((project) => project.id !== projectId),
+        projects: prevState.projects.filter((project) => project.id !== prevState.selectedProjectId),
         selectedProjectId: undefined,
       };
     });
