@@ -1,6 +1,9 @@
 
 export default function NewTask() {
   return (
-    <div>NewTsk</div>
+    <div className="flex items-center gap-4">
+      <input type="text" placeholder="New Task" className="bg-stone-200 px-2 py-1 rounded-sm w-64" />
+      <button className="text-stone-700 hover:text-stone-950">Add Task</button>
+    </div>
   )
 }
