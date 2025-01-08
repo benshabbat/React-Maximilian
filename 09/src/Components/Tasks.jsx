@@ -1,6 +1,6 @@
 import NewTask from "./NewTask";
 
-export default function Tasks({ onAddTask, onDeleteTask, tasks }) {
+export default function Tasks({ onAddTask, onDeleteTask, tasks, projectId }) {
   return (
     <section>
       <h2 className="text-2xl font-bold mb-4 text-stone-700">Tasks</h2>
@@ -10,18 +10,22 @@ export default function Tasks({ onAddTask, onDeleteTask, tasks }) {
           This project dosent have any tasks yet.
         </p>
       )}
-      <ul>
-        {tasks?.map((task) => (
-          <li key={task.id} className="flex items-center gap-4">
-            <p className="text-stone-800">{task.text}</p>
-            <button
-              className="text-stone-700 hover:text-stone-950"
-              onClick={()=>onDeleteTask(task.id)}
-            >
-              Delete
-            </button>
-          </li>
-        ))}
+      <ul className="p-4 mt-8 rounded-md bg-stone-100">
+        {tasks?.map((task) => {
+          if (task.projectId === projectId) {
+            return (
+              <li key={task.id} className="flex justify-between my-4">
+                <span className="text-stone-800">{task.text}</span>
+                <button
+                  className="text-stone-700 hover:text-red-500"
+                  onClick={() => onDeleteTask(task.id)}
+                >
+                  Delete
+                </button>
+              </li>
+            );
+          }
+        })}
       </ul>
     </section>
   );
