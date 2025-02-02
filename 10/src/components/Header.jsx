@@ -4,7 +4,7 @@ import CartModal from './CartModal.jsx';
 import { useCartContext } from './CartContext.jsx';
 
 export default function Header() {
-  const {cart,onUpdateCartItemQuantity}= useCartContext();
+  const {cart}= useCartContext();
   const modal = useRef();
 
   const cartQuantity = cart.items.length;
@@ -28,8 +28,6 @@ export default function Header() {
     <>
       <CartModal
         ref={modal}
-        cartItems={cart.items}
-        onUpdateCartItemQuantity={onUpdateCartItemQuantity}
         title="Your Cart"
         actions={modalActions}
       />
