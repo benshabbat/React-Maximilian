@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CartContext } from "./CartContext";
+import { DUMMY_PRODUCTS } from "../dummy-products";
 
 export default function CartProvider({ children }) {
   const [shoppingCart, setShoppingCart] = useState({
