@@ -1,8 +1,7 @@
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 import { CartContext } from "./CartContext";
 import { DUMMY_PRODUCTS } from "../dummy-products";
 
-//ADD REDUCER WITH USEREDUCER
 
 function cartReducer(state, action) {
   if (action.type === "ADD") {
@@ -66,9 +65,7 @@ export default function CartProvider({ children }) {
   const [cartState, dispatchCartAction] = useReducer(cartReducer, {
     items: [],
   });
-  // const [shoppingCart, setShoppingCart] = useState({
-  //   items: [],
-  // });
+  
   function handleAddItemToCart(id) {
     dispatchCartAction({ type: "ADD", 
       payload: id });
